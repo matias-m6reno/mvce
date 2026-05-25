@@ -1,5 +1,6 @@
 #pragma once
 
+#include "device.hpp"
 #include "pipeline.hpp"
 #include "window.hpp"
 
@@ -14,6 +15,9 @@ public:
 
 private:
   Window window{WIDTH, HEIGHT, "Hello!"};
-  Pipeline pipeline{"shaders/basic_shader.vert", "shaders/basic_shader.frag"};
+  Device device{window};
+  Pipeline pipeline{device, "shaders/basic_shader.vert",
+                    "shaders/basic_shader.frag",
+                    Pipeline::defaultPipelineConfigInfo(WIDTH, HEIGHT)};
 };
 } // namespace mvce
